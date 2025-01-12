@@ -1,0 +1,32 @@
+.GridContent {
+    display: grid;
+    height: 100%;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+.GridItem {
+    height: 100%;
+}
+
+.GridText {
+    height: 100%;
+}
+
+.GridText textarea {
+    height: 100%;
+    overflow: hidden;
+    padding: 0 !important;
+    text-align: center;
+}
+
+.MuiInputBase-root {
+    height: 100%;
+    padding: 0 !important;
+}
+
+.MuiInputBase-inputMultiline {
+    height: 100% !important;
+}
+
+
