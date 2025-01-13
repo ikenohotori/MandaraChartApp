@@ -5,23 +5,31 @@ import "./css/GridContent.css";
 import React from "react";
 
 const GridContent: React.FC<GridContentProps> = ({ goal, onTextClick }) => {
-  if (goal === undefined) {
+  if (goal === undefined || goal.id === 0) {
     return null;
   }
 
   return (
-    <div className="GridContent">
+    <div className="GridContent" key={goal.id}>
       {Array.from({ length: 9 }).map((_, index) => {
         // indexが4の場合(真ん中)は親のgoalを、それ以外は子供のgoalを取得
-        const currentGoal =
-          index === 4 ? goal : goal.children[index > 4 ? index - 1 : index];
+        const isParent = index === 4;
+        const currentGoal = isParent
+          ? goal
+          : goal.children[index > 4 ? index - 1 : index];
         return (
-          <Grid size={{ xs: 4 }} key={currentGoal?.id} className="GridItem">
+          <Grid
+            size={{ xs: 4 }}
+            key={currentGoal.id}
+            className={`
+              GridItem ${isParent ? "GridItemParent" : "GridItemChildren"}
+            `}
+          >
             <TextField
               className="GridText"
               multiline
               fullWidth
-              value={currentGoal?.text}
+              value={currentGoal.text}
               onClick={() => onTextClick(currentGoal)}
             ></TextField>
           </Grid>

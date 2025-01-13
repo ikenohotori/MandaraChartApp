@@ -4,8 +4,11 @@ import GridContent from "./GridContent";
 import React, { useEffect } from "react";
 import InitGoalData from "./InitGoalData";
 import GridItemDialog from "./GridItemDialog";
+import { v4 as uuidv4 } from "uuid";
 
 function Grid() {
+  const storageKey = "mandarachartapp-goal";
+
   const [goal, setGoal] = React.useState<Goal>({
     id: 0,
     text: "",
@@ -24,14 +27,14 @@ function Grid() {
       return;
     }
 
-    const item = localStorage.getItem("goal");
+    const item = localStorage.getItem(storageKey);
     if (item === null) {
       // ブラウザ初回アクセス時
       const goal = InitGoalData();
       setGoal(goal);
-      return;
     } else {
-      const goal = JSON.parse(localStorage.getItem("goal") || "");
+      // ストレージからデータを取得
+      const goal = JSON.parse(item);
       setGoal(goal);
     }
   }, []);
@@ -57,11 +60,11 @@ function Grid() {
     updateChangeText(newGoal);
 
     setGoal(newGoal);
-    localStorage.setItem("goal", JSON.stringify(newGoal));
+    localStorage.setItem(storageKey, JSON.stringify(newGoal));
   };
 
   return (
-    <div className="GridContainer">
+    <div className="GridContainer" key={uuidv4()}>
       {Array.from({ length: 9 }).map((_, index) => {
         const currentGoal =
           index === 4 ? goal : goal.children[index > 4 ? index - 1 : index];

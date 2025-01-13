@@ -3,21 +3,25 @@
     height: 100%;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
+    border: 1px solid #cdcaca;
+    box-sizing: border-box;
+    grid-auto-rows: 1fr;
 }
 
 .GridItem {
     height: 100%;
 }
 
-.GridText {
-    height: 100%;
+.GridItemParent {
+    background: rgb(255 235 216 / 0.3);
 }
 
-.GridText textarea {
+.GridItemChildren {
+    background: rgb(245 245 245 / 0.2);
+}
+
+.GridText {
     height: 100%;
-    overflow: hidden;
-    padding: 0 !important;
-    text-align: center;
 }
 
 .MuiInputBase-root {
@@ -25,8 +29,6 @@
     padding: 0 !important;
 }
 
-.MuiInputBase-inputMultiline {
-    height: 100% !important;
+.GridText textarea {
+    text-align: center;
 }
-
-

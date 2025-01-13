@@ -43,13 +43,13 @@ const GridItemDialog: React.FC<GridItemDialogProps> = ({
       >
         <DialogTitle>編集</DialogTitle>
         <DialogContent>
-          <DialogContentText variant="body2" style={{ marginBottom: "2rem" }}>
+          <DialogContentText variant="body2" style={{ marginBottom: "1rem" }}>
             目標を入力してください（1～50文字）
           </DialogContentText>
           <TextField
             className="DialogText"
             multiline
-            rows={3}
+            rows={4}
             autoFocus
             id="goal"
             margin="dense"
