@@ -6,3 +6,13 @@
     gap: 5px;
     grid-auto-rows: 1fr !important;
 }
+
+@media screen and (max-width: 768px) {
+.GridContainer {
+        display: grid;
+        gap: 5px;
+        grid-auto-rows: 1fr !important;
+        grid-template-columns: 1fr;
+        grid-template-rows: 300px 300px 300px;
+    }
+}

@@ -8,6 +8,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { Goal, GridItemDialogProps } from "./types/Types";
 import React, { useEffect, useState } from "react";
 import "./css/GridItemDialog.css";
+import { useMediaQuery } from "@mui/material";
 
 const GridItemDialog: React.FC<GridItemDialogProps> = ({
   goal,
@@ -29,6 +30,8 @@ const GridItemDialog: React.FC<GridItemDialogProps> = ({
     setInputGoal({ ...inputGoal, text: text });
   };
 
+  const isMobile = useMediaQuery("(max-width: 768px)");
+
   return (
     <React.Fragment>
       <Dialog
@@ -36,8 +39,8 @@ const GridItemDialog: React.FC<GridItemDialogProps> = ({
         onAbort={onClose}
         PaperProps={{
           style: {
-            width: "80vh",
-            height: "40vh",
+            width: isMobile ? "90vw" : "80vw",
+            height: isMobile ? "60vh" : "40vh",
           },
         }}
       >
