@@ -8,6 +8,17 @@
     grid-auto-rows: 1fr;
 }
 
+@media screen and (max-width: 768px) {
+    .GridContent {
+    display: grid;
+        height: 400px;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        border: 1px solid #cdcaca;
+        box-sizing: border-box;
+    }
+}
+
 .GridItem {
     height: 100%;
 }
@@ -18,6 +29,10 @@
 
 .GridItemChildren {
     background: rgb(245 245 245 / 0.2);
+}
+
+.GridItemFinal {
+    background: rgb(255 235 216 / 0.8);
 }
 
 .GridText {

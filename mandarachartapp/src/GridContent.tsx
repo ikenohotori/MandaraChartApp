@@ -14,6 +14,7 @@ const GridContent: React.FC<GridContentProps> = ({ goal, onTextClick }) => {
       {Array.from({ length: 9 }).map((_, index) => {
         // indexが4の場合(真ん中)は親のgoalを、それ以外は子供のgoalを取得
         const isParent = index === 4;
+        const isFinalGoal = goal.id === 1 && isParent;
         const currentGoal = isParent
           ? goal
           : goal.children[index > 4 ? index - 1 : index];
@@ -22,7 +23,9 @@ const GridContent: React.FC<GridContentProps> = ({ goal, onTextClick }) => {
             size={{ xs: 4 }}
             key={currentGoal.id}
             className={`
-              GridItem ${isParent ? "GridItemParent" : "GridItemChildren"}
+              GridItem ${isParent ? "GridItemParent" : "GridItemChildren"} ${
+              isFinalGoal ? "GridItemFinal" : ""
+            }
             `}
           >
             <TextField
