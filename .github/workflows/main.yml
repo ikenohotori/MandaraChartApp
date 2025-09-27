@@ -1,0 +1,21 @@
+name: Trigger Copilot Agent on Issue
+
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  call-agent:
+    if: github.event.label.name == 'copilot-fix'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call Copilot Agent
+        run: |
+          curl -X POST ${{ secrets.COPILOT_AGENT_URL }} \
+            -H "Authorization: Bearer ${{ secrets.COPILOT_API_KEY }}" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "repo": "${{ github.repository }}",
+              "issue_number": "${{ github.event.issue.number }}",
+              "branch_name": "copilot-fix-${{ github.event.issue.number }}"
+            }'
